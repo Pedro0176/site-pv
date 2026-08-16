@@ -3,70 +3,333 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site pro meu amor</title>
+  <title>Pedro & Victoria</title>
 
   <!-- Bootstrap CSS -->
-  <link 
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
   >
 
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+    :root {
+      --wine: #7A2E3B;
+      --wine-dark: #501D26;
+      --blush: #F4DDE0;
+      --blush-soft: #FBEFEF;
+      --cream: #FFFBF7;
+      --gold: #C9A24B;
+      --ink: #3A2E2E;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background-color: var(--cream);
+      background-image:
+        radial-gradient(circle at 10% 5%, var(--blush-soft) 0%, transparent 40%),
+        radial-gradient(circle at 90% 0%, var(--blush) 0%, transparent 35%);
+      color: var(--ink);
+    }
+
+    h1, h2, h3, .display-font {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .script-font {
+      font-family: 'Caveat', cursive;
+    }
+
+    /* ===== Divisor decorativo ===== */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 18px auto 0;
+      max-width: 260px;
+      color: var(--gold);
+    }
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .divider svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--wine);
+      flex-shrink: 0;
+    }
+
+    /* ===== Cabeçalho ===== */
     header {
       text-align: center;
-      padding: 60px 20px 40px;
-      background: linear-gradient(135deg, white);
-      color: black;
+      padding: 70px 20px 50px;
+      color: var(--wine-dark);
+      position: relative;
+    }
+
+    header .eyebrow {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      color: var(--wine);
+      letter-spacing: 0.5px;
+      margin-bottom: -6px;
     }
 
     header h1 {
-      font-size: 2.5rem;
+      font-size: 3.2rem;
       font-weight: 700;
+      letter-spacing: 0.5px;
+      margin: 0;
     }
 
-    header p {
-      font-size: 1.2rem;
-      margin-top: 10px;
-      opacity: 0.9;
+    header h1 .amp {
+      color: var(--gold);
+      font-style: italic;
+      font-weight: 500;
+      padding: 0 6px;
+    }
+
+    header p.subtitle {
+      font-size: 1.15rem;
+      margin-top: 18px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+      color: var(--ink);
+      opacity: 0.85;
+    }
+
+    .couple-photos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin: 34px auto 0;
+      flex-wrap: wrap;
+    }
+
+    .couple-photos img {
+      width: 108px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 3px solid #fff;
+      box-shadow: 0 6px 18px rgba(122, 46, 59, 0.25);
+    }
+
+    .couple-photos .sign {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--gold);
+    }
+
+    .couple-photos .result {
+      font-family: 'Caveat', cursive;
+      font-size: 1.5rem;
+      color: var(--wine);
+      white-space: nowrap;
+    }
+
+    /* ===== Título de seção genérico ===== */
+    .section-title {
+      text-align: center;
+      margin: 0 auto 8px;
+    }
+
+    .section-title .eyebrow {
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      color: var(--wine);
+      display: block;
+    }
+
+    .section-title h2 {
+      font-size: 2.1rem;
+      color: var(--wine-dark);
+      margin: 0;
+    }
+
+    /* ===== Carrossel ===== */
+    .carousel-wrapper {
+      max-width: 900px;
+      margin: 55px auto 0;
+      padding: 0 20px;
     }
 
     .carousel-container {
-      max-width: 900px;
-      margin: 50px auto;
-      border-radius: 12px;
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 12px 40px rgba(122, 46, 59, 0.18);
       background-color: #fff;
+      border: 1px solid var(--blush);
+    }
+
+    .carousel-container .carousel-item img,
+    .carousel-container .carousel-item video {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      background: #111;
     }
 
     .carousel-caption-custom {
-      padding: 20px;
+      padding: 26px 30px 30px;
       background: #fff;
       text-align: center;
-      border-top: 1px solid #eee;
-      font-size: 1.1rem;
+      border-top: 1px dashed var(--blush);
     }
 
+    .carousel-caption-custom .date {
+      display: inline-block;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--wine);
+      background: var(--blush-soft);
+      border: 1px solid var(--blush);
+      border-radius: 30px;
+      padding: 4px 16px;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .carousel-caption-custom p {
+      font-size: 1.08rem;
+      line-height: 1.7;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 8%;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: var(--wine);
+      border-radius: 50%;
+      padding: 18px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    }
+
+    .carousel-indicators [data-bs-target] {
+      background-color: var(--wine);
+    }
+
+    /* ===== Carta aberta ===== */
+    .letter-section {
+      max-width: 780px;
+      margin: 80px auto 60px;
+      padding: 0 20px;
+    }
+
+    .letter-paper {
+      background: #fffdfa;
+      border: 1px solid var(--blush);
+      border-radius: 4px;
+      box-shadow: 0 16px 45px rgba(122, 46, 59, 0.15);
+      padding: 50px 45px;
+      position: relative;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 37px,
+        var(--blush-soft) 38px
+      );
+    }
+
+    .letter-paper::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 46px;
+      width: 1px;
+      height: 100%;
+      background: rgba(201, 162, 75, 0.35);
+    }
+
+    .letter-paper .letter-heading {
+      font-family: 'Caveat', cursive;
+      font-size: 1.6rem;
+      color: var(--wine);
+      margin-bottom: 4px;
+    }
+
+    .letter-paper .letter-body {
+      font-family: 'Lora', serif;
+      font-size: 1.12rem;
+      line-height: 2.15rem;
+      color: var(--ink);
+      white-space: pre-line;
+    }
+
+    .letter-paper .letter-signature {
+      font-family: 'Caveat', cursive;
+      font-size: 1.8rem;
+      color: var(--wine);
+      margin-top: 18px;
+      display: block;
+      text-align: right;
+    }
+
+    .letter-seal {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--wine);
+      color: var(--blush-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: -76px auto 20px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      border: 2px solid var(--gold);
+    }
+
+    /* ===== Rodapé ===== */
     footer {
       text-align: center;
-      padding: 20px;
-      color: #888;
+      padding: 30px 20px 40px;
+      color: #a08b8b;
       font-size: 0.9rem;
     }
 
-
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
+      header {
+        padding: 50px 16px 30px;
       }
-      .carousel-container {
-        margin: 30px 15px;
+      header h1 {
+        font-size: 2.3rem;
+      }
+      .couple-photos img {
+        width: 84px;
+        height: 100px;
+      }
+      .carousel-wrapper {
+        margin: 35px auto 0;
+      }
+      .letter-paper {
+        padding: 38px 24px;
+      }
+      .letter-paper::before {
+        left: 26px;
       }
     }
   </style>
@@ -75,116 +338,203 @@
 
   <!-- Cabeçalho -->
   <header>
-    <h1>Pedro & Victoria</h1>
-    <p>Mostrar alguns dos nossos momentos e reforçar o quão você é importante pra mim, Victoria. ❤️<br>
-    <table style="margin: auto;">
-      <td><img style="border-radius: 200px; width: 100px; height: 120px;" src="fotos\IMG_4517.jpeg" alt="Imagem 2"></td>
-      <td><b>+</b></td>
-      <td><img style="border-radius: 200px; width: 100px; height: 120px;" src="fotos\IMG_3771.jpeg" alt="Imagem 2"></td>
-      <td><b> = Casal do ano</b></td>
-    </table>
+    <span class="eyebrow">nossa história</span>
+    <h1>Pedro <span class="amp">&</span> Victoria</h1>
+    <p class="subtitle">
+      Alguns dos nossos momentos favoritos, reunidos pra reforçar o quanto você é importante pra mim, Victoria. ❤️
+    </p>
 
+    <div class="couple-photos">
+      <img src="src/IMG_4517.jpeg" alt="Foto de Pedro">
+      <span class="sign">+</span>
+      <img src="src/IMG_3771.jpeg" alt="Foto de Victoria">
+      <span class="result">= Casal do ano</span>
+    </div>
+
+    <div class="divider">
+      <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.1 2 4.5 5.6 4c2-.3 3.9.7 5 2.3C11.7 4.7 13.6 3.7 15.6 4c3.6.5 5.2 4.1 3.6 7.7C19.5 16.4 12 21 12 21z"/></svg>
+    </div>
   </header>
 
   <!-- Carrossel -->
+  <div class="carousel-wrapper">
+    <div id="carouselExample" class="carousel slide carousel-container" data-bs-ride="false">
+      <div class="carousel-inner">
+        <!-- Imagem 1 -->
+        <div class="carousel-item active">
+          <img src="src/db81bd10-eca9-48a2-ae18-8a33da1be7ce.jpg" class="d-block w-100" alt="Nosso primeiro encontro">
+          <div class="carousel-caption-custom">
+            <span class="date">17/08/2025</span>
+            <p>Dia da nossa primeira foto juntos e da oficialização do nosso namoro.<br>O quanto eu já te amava você nem imagina e nesse dia só reforçou o sentimento.</p>
+          </div>
+        </div>
 
-  <div id="carouselExample" class="carousel slide carousel-container" data-bs-ride="false">
-    <div class="carousel-inner">
-      <!-- Imagem 1 -->
-      <div class="carousel-item active">
-        <img src="fotos\db81bd10-eca9-48a2-ae18-8a33da1be7ce.jpg" class="d-block w-100" alt="Imagem 2">
-        <div class="carousel-caption-custom">
-          <p><b>17/08/2025</b><br>Dia da nossa primeira foto juntos e da oficialização do nosso namoro. <br>O quanto eu já te amava você nem imagina e nesse dia só reforçou o sentimento.</p>
+        <!-- Imagem 2 -->
+        <div class="carousel-item">
+          <img src="src/e23817b6-a255-4107-aecb-400480608071.jpg" class="d-block w-100" alt="Festa do morango">
+          <div class="carousel-caption-custom">
+            <span class="date">04/09/2025</span>
+            <p>Nosso date na festa do morango sendo que nem de morango eu gosto kkkk, mas valeu a pena porque além de conseguir ver meu amor no meio da semana, o crepe tava ó, bão demaisiii.</p>
+          </div>
         </div>
-      </div>
 
-      <!-- Imagem 2 -->
-      <div class="carousel-item">
-        <img src="fotos\e23817b6-a255-4107-aecb-400480608071.jpg" class="d-block w-100" alt="Imagem 2">
-        <div class="carousel-caption-custom">
-          <p><b>04/09/2025</b><br>Nosso date na festa do morango sendo que nem de morango eu gosto kkkk, <br>mas valeu a pena porque além de conseguir ver meu amor no meio da semana,<br> o crepe tava ó, bão demaisiii.</p>
+        <!-- Imagem 3 -->
+        <div class="carousel-item">
+          <img src="src/e47b479b-7dd4-4d55-8173-5eaaaa0e68b5.jpg" class="d-block w-100" alt="Festa do sogrão">
+          <div class="carousel-caption-custom">
+            <span class="date">07/09/2025</span>
+            <p>Dia da festa do homi, do meu sogrão. Dia de fortes emoções, conheci a família toda, inclusive dona kiki, minha amigona 😘.</p>
+          </div>
         </div>
-      </div>
 
-      <!-- Imagem 3 -->
-      <div class="carousel-item">
-        <img src="fotos\e47b479b-7dd4-4d55-8173-5eaaaa0e68b5.jpg" class="d-block w-100" alt="Imagem 2">
-        <div class="carousel-caption-custom">
-          <p><b>07/09/2025</b><br>Dia da festa do homi, do meu sogrão. Dia de fortes emoções, conheci a família toda, inclusive dona kiki, minha amigona 😘.</p>
+        <!-- Imagem 4 -->
+        <div class="carousel-item">
+          <img src="src/6a1c9f4c-e504-486d-8e91-47ac02554506.jpg" class="d-block w-100" alt="Momento em casa">
+          <div class="carousel-caption-custom">
+            <span class="date">13/09/2025</span>
+            <p>Fotinha só pra relembrar que os nossos melhores momentos são assim, em casa, quietinhos, agarradinhos, vendo qualquer coisa na tv e conversando de tudo.</p>
+          </div>
         </div>
-      </div>
 
-      <!-- Imagem 4 -->
-      <div class="carousel-item">
-        <img style="width: 200px;" src="fotos\6a1c9f4c-e504-486d-8e91-47ac02554506.jpg" class="d-block w-100" alt="Imagem 1">
-        <div class="carousel-caption-custom">
-          <p><b>13/09/2025</b><br>Fotinha só pra relembrar que os nossos melhores momentos são assim, em casa, quietinhos, agarradinhos, vendo qualquer coisa na tv e conversando de tudo.</p>
+        <!-- Imagem 5 -->
+        <div class="carousel-item">
+          <img src="src/9efa9935-28dd-444b-959d-31209bbec96b.jpg" class="d-block w-100" alt="Primeiro mês">
+          <div class="carousel-caption-custom">
+            <span class="date">17/09/2025</span>
+            <p>Nosso primeiro mês juntinhos 🥰.</p>
+          </div>
         </div>
-      </div>
-      <!-- Imagem 5 -->
-      <div class="carousel-item">
-        <img src="fotos\9efa9935-28dd-444b-959d-31209bbec96b.jpg" class="d-block w-100" alt="Imagem 2">
-        <div class="carousel-caption-custom">
-          <p><b>17/09/2025</b><br>Nosso primeiro mês juntinhos 🥰.</p>
-        </div>
-      </div>
-      <!-- Imagem 6 -->
-      <div class="carousel-item">
-        <img src="fotos\IMG_4092.jpg" class="d-block w-100" alt="Imagem 2">
-        <div class="carousel-caption-custom">
-          <p><b>12/10/2025</b><br>Aqui eu queria falar o quão você é importante pra mim e que eu quero você comigo em todos os momentos, nos bons e ruins.</p>
-        </div>
-      </div>
 
-      <!-- Imagem 7 -->
-      <div class="carousel-item">
-        <img src="fotos\copykid.jpeg" class="d-block w-100" alt="Imagem 2">
-        <div class="carousel-caption-custom">
-          <p><b>-</b><br>Quem diria que essas duas crianças um dia se amariam tanto...<br>
+        <!-- Imagem 6 -->
+        <div class="carousel-item">
+          <img src="src/IMG_4092.jpg" class="d-block w-100" alt="Você é importante pra mim">
+          <div class="carousel-caption-custom">
+            <span class="date">12/10/2025</span>
+            <p>Aqui eu queria falar o quão você é importante pra mim e que eu quero você comigo em todos os momentos, nos bons e ruins.</p>
+          </div>
+        </div>
+
+        <!-- Imagem 7 -->
+        <div class="carousel-item">
+          <img src="src/copykid.jpeg" class="d-block w-100" alt="Fotos de infância">
+          <div class="carousel-caption-custom">
+            <span class="date">um marco</span>
+            <p>Quem diria que essas duas crianças um dia se amariam tanto...<br>
             Meu bem, acho que tudo o que tenho pra falar eu sempre falo quando estamos juntos, não vou ser clichê aqui porque você sabe tudo o que sinto por você, mas eu quero que hoje seja um marco importante em nosso relacionamento e que isso seja um símbolo de confirmação da nossa parceria e do amor que temos um pelo outro.</p>
+          </div>
+        </div>
+
+        <!-- Imagem 8 -->
+        <div class="carousel-item">
+          <video class="d-block w-100" autoplay muted loop playsinline>
+            <source src="src/video_pv.mp4" type="video/mp4" />
+          </video>
+          <div class="carousel-caption-custom">
+            <span class="date">01/11/2025</span>
+            <p>Nesse dia, eu não fui direto pra sua casa, tinha saído mais cedo pra passar em um lugar antes hihi 🙈<br>
+            <b>Fui buscar algo que você queria, e com o tempo eu também passei a querer.</b></p>
+          </div>
+        </div>
+
+        <!-- Imagem - surpresa -->
+        <div class="carousel-item">
+          <img src="src/IMG_4677.jpeg" class="d-block w-100" alt="Chegou o dia">
+          <div class="carousel-caption-custom">
+            <span class="date">08/11/2025</span>
+            <p>Data em que entreguei a nossa primeira aliança de compromisso, um dia de muita emoção e ansiedade pelo o que estava por vir.</p>
+            <p></p>
+          </div>
         </div>
       </div>
 
-      <!-- Imagem 8 -->
-      <div class="carousel-item">
-        <video width="370px;" height="360px;" style="align-items: center;" autoplay>
-          <source src="fotos\video_pv.mp4" type="video/mp4" />
-        </video>
-        <div class="carousel-caption-custom">
-          <p><b>01/11/2025</b><br><br>
-            Nesse dia, eu não fui direto pra sua casa, tinha saído mais cedo pra passar em um lugar antes hihi 🙈<br>
-          <b>Fui buscar algo que você queria, e com o tempo eu também passei a querer.</b></p>
-        </div>
-      </div>
+      <!-- Controles -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
+    </div>
+  </div>
 
-      <!-- Imagem - surpresa -->
-      <div class="carousel-item">
-        <img src="fotos\IMG_4677.jpeg" class="d-block w-100" alt="Imagem 2">
-        <div class="carousel-caption-custom">
-          <p><b>CHEGOU O DIA!!</b></p>
-        </div>
-      </div>
-      
+  <!-- Carta Aberta -->
+  <section class="letter-section">
+    <div class="section-title">
+      <span class="eyebrow">pra você</span>
+      <h2>Carta aberta</h2>
+    </div>
+    <div class="divider">
+      <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.1 2 4.5 5.6 4c2-.3 3.9.7 5 2.3C11.7 4.7 13.6 3.7 15.6 4c3.6.5 5.2 4.1 3.6 7.7C19.5 16.4 12 21 12 21z"/></svg>
     </div>
 
-    <!-- Controles -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Anterior</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Próximo</span>
-    </button>
-  </div>
+    <div class="letter-paper mt-4">
+      <div class="letter-seal">PV</div>
+      <p class="letter-heading">Victoria,</p>
+
+      <!--
+        ============================================================
+        ESCREVA SUA CARTA AQUI EMBAIXO, ENTRE AS TAGS <p> e </p>.
+        - Pode usar <br> para pular linha dentro do texto.
+        - Pode usar <b>texto</b> para deixar algo em negrito.
+        - Não precisa mexer em mais nada nesta seção.
+        ============================================================
+      -->
+      <p class="letter-body">
+Hoje faz 1 ano desde o show do ComVocação. 1 ano desde aquele dia em que paramos o carro em frente à sua casa e, de uma forma tão despretensiosa, saímos dali com a confirmação de que estávamos namorando.
+
+1 ano em que o Santos perdeu de goleada para o Vasco, 1 ano em que eu comprei meu celular, 1 ano em que comemos aquela tapioca recheada... São tantas pequenas coisas que, olhando agora, parecem bobas, mas que acabaram fazendo parte de um dos dias mais importantes da minha vida.
+
+Eu sou ruim para lembrar das coisas e, principalmente, para lembrar de datas. Mas o dia 17/08/2025 eu lembro. Lembro de cada detalhe, porque aquele dia significou muito para mim.
+
+Não teve pedido de namoro, aliança ou qualquer coisa muito planejada. Foi simplesmente uma confirmação dos dois de que estávamos juntos e, mais do que isso, de que queríamos construir alguma coisa juntos.
+
+E foi exatamente isso que começamos a fazer.
+
+O tempo foi passando e, de forma muito natural, algumas coisas começaram a acontecer. Vieram os desentendimentos, as falhas de comunicação, algumas brigas por motivos completamente bestas. Coisas que antes não aconteciam começaram a acontecer e, em alguns momentos, até com bastante frequência.
+
+Tiveram meses em que parecia que todo final de semana a gente tinha algum problema para resolver. E, olhando para tudo isso hoje, eu acho que tem uma coisa que explica por que chegamos até aqui: o amor que temos um pelo outro.
+
+Porque, mesmo passando por tanta coisa, a gente nunca soltou a mão um do outro. A gente poderia ter desistido em vários momentos, mas não desistimos. Conversamos, brigamos, erramos, aprendemos, pedimos desculpas e continuamos. E acho que é isso que torna tudo ainda mais especial.
+
+Nesse nosso primeiro ano, além de te agradecer, eu também quero te pedir desculpas.
+
+Desculpa pelas vezes em que não demonstrei o amor que sinto por você da maneira que deveria. Desculpa pelas vezes em que, no meio de uma discussão, acabei falando de um jeito que nunca deveria ter falado e te magoei. Desculpa por alguma mensagem no WhatsApp que talvez eu tenha escrito de qualquer jeito, você tenha interpretado de outra forma e acabou ficando pensando em mil coisas.
+
+Desculpa por não ser, talvez, o cara 100% perfeito.
+
+Mas eu tento, mo. Juro que eu tento.
+
+E quero continuar tentando. Não porque eu ache que preciso ser perfeito para estar com você, mas porque você é alguém por quem vale a pena querer ser uma pessoa melhor todos os dias.
+
+Esse nosso primeiro ano me ensinou muita coisa sobre você, sobre mim e, principalmente, sobre nós. E apesar de todas as dificuldades, eu não trocaria a nossa história por uma história perfeita que não fosse a nossa.
+
+Obrigado por cada momento, por cada risada, por cada abraço, por cada conversa, por cada rolê, por cada final de semana juntos e até pelas discussões que, de alguma forma, fizeram a gente aprender a se conhecer ainda mais.
+
+Obrigado por ter escolhido ficar. Por continuar segurando a minha mão. Por construir isso comigo.
+
+Hoje, 1 ano depois daquele dia em frente à sua casa, eu só consigo pensar em quantas outras histórias ainda quero viver ao seu lado.
+
+Espero que Deus continue abençoando o nosso relacionamento, nos dando sabedoria, paciência e, principalmente, muito amor para que a gente possa comemorar essa data juntos por muitos e muitos anos.
+
+Quem sabe daqui a alguns anos a gente esteja lembrando daquele 17/08/2025 e rindo de como tudo começou.
+
+Eu te amo, mo.
+
+Feliz 1 ano de nós. ❤️</p>
+
+      <span class="letter-signature">— Pedro</span>
+    </div>
+  </section>
 
   <!-- Rodapé -->
   <footer>
-    © 2025 - Desenvolvido por Pedro Martins
+    © 2026 - Desenvolvido por Pedro Martins
   </footer>
 
   <!-- Bootstrap JS -->
-  <script 
+  <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
   </script>
 </body>
